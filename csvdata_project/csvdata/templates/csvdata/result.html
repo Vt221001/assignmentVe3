@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Analysis Results</title>
+  </head>
+  <body>
+    <h1>Data Analysis Results</h1>
+    <h2>Data Preview</h2>
+    <table border="1">
+      <tr>
+        {% for column in data.columns %}
+        <th>{{ column }}</th>
+        {% endfor %}
+      </tr>
+      {% for row in data.values %}
+      <tr>
+        {% for value in row %}
+        <td>{{ value }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Summary Statistics</h2>
+    <pre>{{ summary }}</pre>
+
+    <h2>Missing Data</h2>
+    <pre>{{ missing_data }}</pre>
+
+    <h2>Data Visualizations</h2>
+    <div>
+      {% for plot in plots %}
+      <img
+        src="/static/{{ plot }}"
+        alt="Data Visualization"
+        style="width: 600px; margin-bottom: 20px"
+      />
+      {% endfor %}
+    </div>
+  </body>
+</html>
